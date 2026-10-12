@@ -19,46 +19,34 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $alert = "Invalid Hospital Unit ID format. Verification failed.";
     }
 }
+
+include 'includes/header.php'; 
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Post Urgent Blood Request</title>
-    <link rel="stylesheet" href="css/styles.css">
-</head>
-<body>
-    <header>
-        <h2>Emergency Request Broadcast Portal</h2>
-        <nav><a href="index.php">Dashboard</a> | <a href="request.php">Urgent Request</a> | <a href="register.php">Donors</a></nav>
-    </header>
-    <main class="container">
-        <section class="form-card">
-            <h3>Broadcast Urgent Blood Demand</h3>
-            <?php if ($alert): ?><p class="alert"><?= htmlspecialchars($alert) ?></p><?php endif; ?>
-            <form method="POST">
-                <input type="text" name="hospital_name" placeholder="Hospital / Medical Facility Name" required>
-                <input type="text" name="hospital_unit_id" placeholder="Hospital Unit License/ID (Min 6 chars)" required>
-                <select name="patient_blood_group" required>
-                    <option value="">Required Blood Group</option>
-                    <option value="Bombay_Oh">Bombay Phenotype (Oh) - Rare</option>
-                    <option value="Rh_null">Rh-null (Golden Blood) - Critical</option>
-                    <option value="O-">O- Negative</option>
-                    <option value="AB-">AB- Negative</option>
-                    <option value="A-">A- Negative</option>
-                    <option value="B-">B- Negative</option>
-                </select>
-                <input type="number" name="units_needed" min="1" max="10" placeholder="Units Needed" required>
-                <select name="urgency_level" required>
-                    <option value="Standard">Standard (Within 24 hours)</option>
-                    <option value="Urgent">Urgent (Within 6 hours)</option>
-                    <option value="Critical">Critical (Immediate / Emergency ICU)</option>
-                </select>
-                <input type="tel" name="contact_phone" placeholder="Emergency Ward Phone Number" required>
-                <button type="submit" class="btn-danger">Broadcast Emergency Request</button>
-            </form>
-        </section>
-    </main>
-</body>
-</html>
+<section class="form-card">
+    <h3>Broadcast Urgent Blood Demand</h3>
+    <?php if ($alert): ?><p class="alert"><?= htmlspecialchars($alert) ?></p><?php endif; ?>
+    <form method="POST">
+        <input type="text" name="hospital_name" placeholder="Hospital / Medical Facility Name" required>
+        <input type="text" name="hospital_unit_id" placeholder="Hospital Unit License/ID (Min 6 chars)" required>
+        <select name="patient_blood_group" required>
+            <option value="">Required Blood Group</option>
+            <option value="Bombay_Oh">Bombay Phenotype (Oh) - Rare</option>
+            <option value="Rh_null">Rh-null (Golden Blood) - Critical</option>
+            <option value="O-">O- Negative</option>
+            <option value="AB-">AB- Negative</option>
+            <option value="A-">A- Negative</option>
+            <option value="B-">B- Negative</option>
+        </select>
+        <input type="number" name="units_needed" min="1" max="10" placeholder="Units Needed" required>
+        <select name="urgency_level" required>
+            <option value="Standard">Standard (Within 24 hours)</option>
+            <option value="Urgent">Urgent (Within 6 hours)</option>
+            <option value="Critical">Critical (Immediate / Emergency ICU)</option>
+        </select>
+        <input type="tel" name="contact_phone" placeholder="Emergency Ward Phone Number" required>
+        <button type="submit" class="btn-danger">Broadcast Emergency Request</button>
+    </form>
+</section>
+
+<?php include 'includes/footer.php'; ?>
